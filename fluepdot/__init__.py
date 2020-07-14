@@ -1,5 +1,3 @@
-import socket
-
 import requests
 
 from PIL import Image, ImageDraw
@@ -10,9 +8,11 @@ class Fluepdot:
         FULL = 0
         DIFFERENTIAL = 1
 
-    def __init__(self, hostname: str, rendering_mode=RenderingMode.FULL):
-        host = socket.gethostbyname(hostname)
-        self.base_url = 'http://' + host
+    def __init__(self, url: str, rendering_mode=RenderingMode.FULL):
+        protocol = 'http://'
+        if not url.startswith(protocol):
+            url = protocol + url
+        self.base_url = url
         self.image = self.load_framebuffer()
         self.width, self.height = self.image.size
         if rendering_mode != Fluepdot.RenderingMode.FULL:

@@ -13,7 +13,7 @@ There is a CLI for basic functions. To view the help, run `python3 -m fluepdot -
 To use it in Python code, instantiate a Fluepdot class:
 ```python
 from fluepdot import Fluepdot
-fluepdot = Fluepdot("hostname or IP address")
+fluepdot = Fluepdot("http://fluepdot.local")
 ```
 
 For more details, check out the `examples` folder.
